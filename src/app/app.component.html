@@ -1,0 +1,121 @@
+<div class="container"  >
+
+  <div class="form-inline"  *ngIf="makeVisibleForm">
+    <div>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Task Name"
+        name="name"
+        [(ngModel)]="taskName">
+    </div>
+
+    <div>
+      <select
+       class="form-select"
+       aria-label="Default select example"
+       name="level"
+       (change)="onChange($event)">
+
+        <option
+        *ngFor="let item of levels"
+           >
+          {{item}}
+        </option>
+
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="pushinTodo()" >Add</button>
+
+  </div>
+
+  <button   type="button" class="btn btn-primary addTaskBtn" (click)="changeVisbForm()" >Add New Task</button>
+
+</div>
+
+
+
+
+
+<!--Cards -->
+<div class="wholeContainer">
+
+<!-- Todo -->
+
+      <div class="card border-dark mb-3  forAll"  >
+        <div class="card-header"><fa-icon [icon]="todoIcon"></fa-icon> Todo</div>
+
+        <div   class="empyText">
+          <p>List is empty</p>
+        </div>
+
+        <div class="inner-div" *ngFor="let item of tasks; let i = index">
+            <div class="card-body text-dark">
+              <div class="forFlex">
+                <h5 class="card-title"> {{item.name}}</h5>
+                <div class="btn-div">
+                  <button type="button" class="btn btn-primary"  >></button>
+                  <button type="button" class="btn btn-danger" (click)="remove(i)" >X</button>
+                </div>
+              </div>
+              <span class="badge rounded-pill"  >{{item.level}}</span>
+            </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- In Progress -->
+
+      <div class="card border-dark mb-3  forAll"  >
+        <div class="card-header"><fa-icon [icon]="todoIcon"></fa-icon> In Progress</div>
+
+        <div  class="empyText"  >
+          <p>List is empty</p>
+        </div>
+
+        <div class="inner-div"  >
+            <div class="card-body text-dark">
+              <div class="forFlex">
+                <h5 class="card-title">Task Name </h5>
+                <div class="btn-div">
+                  <button type="button" class="btn btn-primary" ><</button>
+                  <button type="button" class="btn btn-success"  >></button>
+                </div>
+              </div>
+              <span class="badge rounded-pill "  >Badge</span>
+            </div>
+        </div>
+      </div>
+
+
+
+      <!-- Done -->
+
+
+      <div class="card border-dark mb-3  forAll"  >
+        <div class="card-header"><fa-icon [icon]="todoIcon"></fa-icon> Done</div>
+
+        <div  class="empyText"  >
+          <p>List is empty</p>
+        </div>
+
+        <div class="inner-div"  >
+            <div class="card-body text-dark">
+              <div class="forFlex">
+                <h5 class="card-title">Task Name</h5>
+                <div class="btn-div">
+                  <button type="button" class="btn btn-primary backInBtn"  ><</button>
+                </div>
+              </div>
+              <span class="badge rounded-pill"  >Badge </span>
+            </div>
+        </div>
+      </div>
+
+</div>
+
+
+
